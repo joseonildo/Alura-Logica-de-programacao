@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+    <h1> Projeto: Jogo "Adivinha"!</h1>
+
+    <script>
+
+        function pulaLinha() {
+            document.write("<br><br>");
+        }
+
+        function mostra(conteudo) {
+            document.write(conteudo);
+            pulaLinha();
+        }
+
+        var tentativas, numeroSorteado, jogar, chute, quantidadeNumeros;
+
+        function sortearNumero() {
+            quantidadeNumeros = parseInt(prompt("Digite a quantidade de numeros a ser sorteada: 5 a 100"));
+            numeroSorteado = Math.round(Math.random() * quantidadeNumeros);
+            mostra("Número sorteado: " + numeroSorteado);
+            tentativas = Math.round(quantidadeNumeros / 5);
+        }
+
+        function jogarNovamente() {
+            jogar = prompt("Jogar novamente? Digite Sim ou Não");
+            if (jogar == "Sim" || jogar == "sim" || jogar == "1" || jogar == "s") {
+                sortearNumero();
+                mostra("Jogar novamente: " + jogar);
+            }
+            else {
+                tentativas = 0;
+                mostra("Jogar novamente: Não!");
+            }
+        }
+
+        sortearNumero();
+        while (tentativas) {
+            chute = parseInt(prompt("Digite um número de 0 a " + quantidadeNumeros));
+            mostra("Digite um número de 0 a " + quantidadeNumeros);
+            mostra("Número digitado: " + chute);
+            if (chute == numeroSorteado) {
+                alert("Parabens!! Você acertou!! Número " + numeroSorteado);
+                mostra("Parabens!! Você acertou!! Número " + numeroSorteado);
+                jogarNovamente();
+            }
+            else {
+                tentativas--;
+                if (tentativas == 0) {
+                    alert("Você errou! Acabou o número de tentativas! Número correto: " + numeroSorteado);
+                    mostra("Você errou! Acabou o número de tentativas! Número correto: " + numeroSorteado);
+                    jogarNovamente();
+                }
+                else {
+                    if (chute < numeroSorteado) {
+                        alert("Você errou! O número é maior! Tentativas restantes: " + tentativas);
+                        mostra("Você errou! O número é maior! Tentativas restantes: " + tentativas);
+                    }
+                    else {
+                        alert("Você errou! O número é menor! Tentativas restantes: " + tentativas);
+                        mostra("Você errou! O número é menor! Tentativas restantes: " + tentativas);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
