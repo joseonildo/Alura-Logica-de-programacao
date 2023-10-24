@@ -18,52 +18,56 @@
             pulaLinha();
         }
 
-        var tentativas, numeroSorteado, jogar, chute, quantidadeNumeros;
+        var tentativas, numeroSorteado, jogar, chute, quantidadeNumeros, numerosChutados = [];
 
         function sortearNumero() {
-            quantidadeNumeros = parseInt(prompt("Digite a quantidade de numeros a ser sorteada: 5 a 100"));
+            quantidadeNumeros = parseInt(prompt(`Digite a quantidade de numeros a ser sorteada: 5 a 100`));
             numeroSorteado = Math.round(Math.random() * quantidadeNumeros);
             mostra("Número sorteado: " + numeroSorteado);
             tentativas = Math.round(quantidadeNumeros / 5);
         }
 
         function jogarNovamente() {
-            jogar = prompt("Jogar novamente? Digite Sim ou Não");
+            jogar = prompt(`Jogar novamente? Digite Sim ou Não `);
             if (jogar == "Sim" || jogar == "sim" || jogar == "1" || jogar == "s") {
                 sortearNumero();
-                mostra("Jogar novamente: " + jogar);
+                numerosChutados = [];
+                mostra(`Jogar novamente? Digite Sim ou Não: ${jogar}`);
             }
             else {
                 tentativas = 0;
-                mostra("Jogar novamente: Não!");
+                mostra(`Jogar novamente? Digite Sim ou Não: ${jogar}`);
+                alert(`OK! Obrigado por jogar esse jogo! \nAté a proxima!`)
+                mostra(`OK! Obrigado por jogar esse jogo! \nAté a proxima!`);
             }
         }
 
         sortearNumero();
-        while (tentativas) {
-            chute = parseInt(prompt("Digite um número de 0 a " + quantidadeNumeros));
-            mostra("Digite um número de 0 a " + quantidadeNumeros);
-            mostra("Número digitado: " + chute);
+        while (tentativas) {            
+            chute = parseInt(prompt(`Tentativas restantes: ${tentativas} \nNúmeros já chutados: ${numerosChutados} \nDigite um número de 0 a ${quantidadeNumeros}: `));
+            numerosChutados.push(chute);
+            mostra(`Tentativas restantes: ${tentativas} \nDigite um número de 0 a ${quantidadeNumeros}: `);
+            mostra(`Número digitado: ${chute}`);
             if (chute == numeroSorteado) {
-                alert("Parabens!! Você acertou!! Número " + numeroSorteado);
-                mostra("Parabens!! Você acertou!! Número " + numeroSorteado);
+                alert(`Parabens!! \nVocê acertou o número secreto!! \nNúmeros chutados ${numerosChutados} \nNúmero ${numeroSorteado}!!`);
+                mostra(`Parabens!! \nVocê acertou o número secreto!! \nNúmeros chutados ${numerosChutados} \nNúmero ${numeroSorteado}!!`);
                 jogarNovamente();
             }
             else {
                 tentativas--;
-                if (tentativas == 0) {
-                    alert("Você errou! Acabou o número de tentativas! Número correto: " + numeroSorteado);
-                    mostra("Você errou! Acabou o número de tentativas! Número correto: " + numeroSorteado);
+                if (!tentativas) {
+                    alert(`Você errou! \nAcabou o número de tentativas! \nNúmeros chutados ${numerosChutados} \nO número secreto era: ${numeroSorteado}!`);
+                    mostra(`Você errou! \nAcabou o número de tentativas! \nNúmeros chutados ${numerosChutados} \nO número secreto era: ${numeroSorteado}!`);
                     jogarNovamente();
                 }
                 else {
                     if (chute < numeroSorteado) {
-                        alert("Você errou! O número é maior! Tentativas restantes: " + tentativas);
-                        mostra("Você errou! O número é maior! Tentativas restantes: " + tentativas);
+                        alert(`Você errou!  \nO número secreto é maior que ${chute}! \nTentativas restantes: ${tentativas}`);
+                        mostra(`Você errou! \nO número secreto é maior que ${chute}! \nTentativas restantes: ${tentativas}`);
                     }
                     else {
-                        alert("Você errou! O número é menor! Tentativas restantes: " + tentativas);
-                        mostra("Você errou! O número é menor! Tentativas restantes: " + tentativas);
+                        alert(`Você errou! \nO número secreto é menor que ${chute}! \nTentativas restantes: ${tentativas}`);
+                        mostra(`Você errou! \nO número secreto é menor que ${chute}! \nTentativas restantes: ${tentativas}`);
                     }
                 }
             }
