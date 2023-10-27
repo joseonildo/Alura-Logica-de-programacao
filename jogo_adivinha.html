@@ -57,8 +57,8 @@ while (tentativas) {    // Laço principal que fará repetir todo o jogo até as
         }
     }
     if (!chuteRepetido){                        // Se marcado como repetido então o programa não continua e voltamos ao laço principal.
-        numerosChutados.push(chute);            // Se não marcado como repetido então o programa continua e coloca o numero na lista
-        if (chute == numeroSorteado) {          // Se acertou o chute parabeniza o usuário
+        numerosChutados.push(chute);            // Coloca o numero chutado na lista de números chutados.
+        if (chute == numeroSorteado) {          // Se acertou o chute parabeniza o usuário.
             alert(`Parabens!! \nVocê acertou o número secreto!! \nNúmeros chutados ${numerosChutados} \nNúmero secreto ${numeroSorteado} !!`);
             mostra(`Parabens!! \nVocê acertou o número secreto!! \nNúmeros chutados ${numerosChutados} \nNúmero secreto ${numeroSorteado} !!`);
             jogarNovamente();                   //chama a função para oferecer a opção de jogar novamente.
