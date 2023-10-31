@@ -22,15 +22,15 @@ let tentativasRestantes, numeroSorteado, jogar, chute, quantidadeNumeros, numero
 
 function sortearNumero() {    // Função para sortear o número secreto baseado na quantidade de números escolhido.
     while(1) {
-        quantidadeNumeros = parseInt(prompt(`Digite a quantidade de numeros a ser sorteada: 3 a 100`));
-        mostra(`Digite a quantidade de numeros a ser sorteada: 3 a 100: ${quantidadeNumeros}`)
-        if (quantidadeNumeros < 3 | quantidadeNumeros > 100) {                  
-            alert(`Quantidade ${quantidadeNumeros} não é aceita! \nDigite um numero de 3 a 100`);
+        quantidadeNumeros = parseInt(prompt(`Digite a quantidade de numeros a ser sorteada: 2 a 100`));
+        mostra(`Digite a quantidade de numeros a ser sorteada: 2 a 100: ${quantidadeNumeros}`)
+        if (quantidadeNumeros < 2 | quantidadeNumeros > 100) {                  
+            alert(`Quantidade ${quantidadeNumeros} não é aceita! \nDigite um numero de 2 a 100`);
             mostra(`Quantidade ${quantidadeNumeros} não é aceita! <br>Digite um numero de 3 a 100`);
         } else {
-            numeroSorteado = Math.round(Math.random() * quantidadeNumeros);  // Sorteia o número secreto
+            numeroSorteado = Math.round(Math.random() * (quantidadeNumeros + 1));  // Sorteia o número secreto
             mostra(`Número secreto sorteado: ${numeroSorteado}`);
-            tentativasRestantes = Math.round(quantidadeNumeros / 5);    // Define as a quantidade de tentativas que o usuério terá baseado 
+            tentativasRestantes = Math.round(quantidadeNumeros / 4);    // Define as a quantidade de tentativas que o usuério terá baseado 
             break;                                                      // na quantidade de números escolhida pelo usuário
         }
         
