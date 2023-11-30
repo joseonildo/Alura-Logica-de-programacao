@@ -1,44 +1,70 @@
-let numeroSorteado, numeroChutado, tentativas = 5;
+let numeroSorteado, chute, numerosChutados = "", tentativas = 5;
 let botaoChutar =  document.querySelector('#chutar'); 
 let botaoNovoJogo =  document.querySelector('#reiniciar'); 
 let campoChute =  document.querySelector('#campoChute');                       // Variáveis globais
+
+function atualizaTextos(){
+    exibirTexto('h1', 'Jogo - Número secreto');                 // Exibe o título - tag h1
+    exibirTexto('p1', 'Digite um número de 0 e 100:');        // Exibe o paragrafo - tag p1
+    exibirTexto('p2', 'Tentativas restantes: ' + tentativas);   // Exibe o paragrafo - tag p2
+    exibirTexto('p3', 'Números chutados: ' + numerosChutados);  // Exibe o paragrafo - tag p3    
+    campoChute.focus();
+}
+
+const delayms = (delayInms) => {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+};
+
+const delay = async (texto) => { 
+    let maiorMenor = numeroSorteado > chute ? "maior" : "menor"; 
+    campoChute.value = 'Ops, Você errou! O número é '+maiorMenor+'!'; 
+    let delayres = await delayms(500);         
+    campoChute.value = "";
+    delayres = await delayms(500);
+    campoChute.value = 'Ops, Você errou! O número é '+maiorMenor+'!';
+    delayres = await delayms(500);
+    campoChute.value = "";
+    campoChute.focus();
+};
 
 function exibirTexto(tag, texto) {                          // Função para exibir texto no html
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
 }
 
-
-
-function sortearNumero() {                                   // Função para sortear o número secreto.
-    numeroSorteado = Math.round(Math.random() * 10);        // retorna o número secreto sorteado 
+function novoJogo() {                                       // Função para sortear o número secreto.
+    numeroSorteado = Math.round(Math.random() * 101);       // retorna o número secreto sorteado 
     botaoChutar.disabled = false; 
     botaoNovoJogo.disabled = true;
+    tentativas = 10;
+    campoChute.value = "";
     campoChute.focus(); 
+    numerosChutados = "";
+    atualizaTextos();
 }
 
-
 function verificarChute() {                                 // Função para verificar o chute
-    numeroChutado = campoChute.value; 
+    chute = campoChute.value; 
     campoChute.value = "";
-    campoChute.focus();   
-    if (numeroSorteado == numeroChutado) {
-        alert(`Parabens, Você acertou o número secreto`);
-        tentativas = 5;
+    numerosChutados += chute + ', ';
+    if (numeroSorteado == chute) {
+        campoChute.value = 'Parabens! Você acertou! Número "'+numeroSorteado+'"!';
+        atualizaTextos();
         botaoChutar.disabled = true; 
         botaoNovoJogo.disabled = false;         
-    } else {
-        alert(`Ops, Você errou o número secreto`);
+    } else {                
         tentativas--;
         if (!tentativas) {
+            campoChute.value = 'Ops, Você errou! O número era: "'+numeroSorteado+'"!';
+            atualizaTextos();
             botaoChutar.disabled = true; 
             botaoNovoJogo.disabled = false; 
-        }
+        } else {
+            delay();
+            atualizaTextos();
+        }        
     }
     
 }
-
-exibirTexto('h1', 'Jogo - Número secreto');                 // Exibe o título - tag h1
-exibirTexto('p', 'Digite um número entre 1 e 10:');         // Exibe o paragrafo - tag p
-sortearNumero();                                            // Chama a função e sorteia o numero secreto
-campoChute.focus();                                        
+novoJogo();                                                     // Chama a função e sorteia o numero secreto
+atualizaTextos();                                               // Atualiza textos na tela
