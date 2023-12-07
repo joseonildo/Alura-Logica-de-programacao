@@ -19,9 +19,9 @@ body {
     margin: 5px 0;
 }
 
-button, .button-jogar {
+button {
     padding: .8rem 1.5rem;
-    margin: 1rem 0;
+    margin: 1rem 0 0 0;
     border-radius: 5px;
     border: none;
     font-size: 1rem;
