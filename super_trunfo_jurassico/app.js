@@ -1,25 +1,25 @@
 console.clear();
 
 var cartas = [{nome:"Blue",
-               imagem: "/img/blue.png",
+               imagem: "img/blue.png",
                atributos: {Ataque: 10, Defesa: 6, Grito: 5}},
              {nome:"Echo",
-              imagem: "/img/echo.png",
+              imagem: "img/echo.png",
               atributos: {Ataque: 5, Defesa: 5, Grito: 5}}, 
              {nome:"Delta",
-              imagem: "/img/delta.png",
+              imagem: "img/delta.png",
               atributos: {Ataque: 4, Defesa: 4, Grito: 7}},
              {nome:"Tiranossauro Rex",
-              imagem: "/img/t-rex.png",
+              imagem: "img/t-rex.png",
               atributos: {Ataque: 7, Defesa: 8, Grito: 10}},
              {nome:"Carnotauro",
-              imagem: "/img/carnotauro.png",
+              imagem: "img/carnotauro.png",
               atributos: {Ataque: 7, Defesa: 8, Grito: 6}},
              {nome:"Indominus Rex",
-              imagem: "/img/indominus.png",
+              imagem: "img/indominus.png",
               atributos: {Ataque: 10, Defesa: 7, Grito: 3}},
              {nome:"Indoraptor",
-              imagem: "/img/indoraptor.png",
+              imagem: "img/indoraptor.png",
               atributos: {Ataque: 9, Defesa: 4, Grito: 6}}];
 var cartaMaquina;
 var cartaJogador;
@@ -32,7 +32,7 @@ var divCartaJogador = document.getElementById("carta-jogador");
 function sortearCarta() {
   console.clear();
   resultado.innerHTML = "";
-  divCartaMaquina.innerHTML = '<img src="/img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
+  divCartaMaquina.innerHTML = '<img src="img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
   divCartaMaquina.style.backgroundImage = "";
   var numeroCarta = parseInt(Math.random() * 7);
   cartaMaquina = cartas[numeroCarta]; 
@@ -53,7 +53,7 @@ function sortearCarta() {
 
 function exibirCartaJogador(){
   var nome = "<p class='carta-subtitle'>" + cartaJogador.nome + "</p>";
-  var moldura = '<img src="/img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
+  var moldura = '<img src="img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
   var tagHTML = "<div id='opcoes' class= 'carta-status'>";
   var radioOpcoes = "";
   for (var atributoJ in cartaJogador.atributos){
@@ -65,7 +65,7 @@ function exibirCartaJogador(){
 
 function exibirCartaMaquina(){
   var nome = "<p class='carta-subtitle'>" + cartaMaquina.nome + "</p>";
-  var moldura = '<img src="/img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
+  var moldura = '<img src="img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
   var tagHTML = "<div id='opcoes' class= 'carta-status'>";
   var radioOpcoes = "";
   for (var atributoM in cartaMaquina.atributos){
@@ -127,7 +127,7 @@ function marcaAtributoMaquina(){
 
 function exibirCartaJogadorCompleta(){
   var nome = "<p class='carta-subtitle'>" + cartaJogador.nome + "</p>";
-  var moldura = '<img src="/img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
+  var moldura = '<img src="img/card-super-trunfo.png" style=" width: inherit; height: inherit; position: absolute;">';
   var tagHTML = "<div id='opcoes' class= 'carta-status'>";
   var radioOpcoes = "";
   for (var atributoJ in cartaJogador.atributos){
