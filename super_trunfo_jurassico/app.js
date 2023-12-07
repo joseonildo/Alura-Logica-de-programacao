@@ -73,12 +73,27 @@ function exibirCartaMaquina(){
 function jogar(){
   atributoJogador = obtemAtributoJogador();     
   if (atributoJogador == undefined) {
-    //document.getElementById("btnSortear").disabled = true;
-    //document.getElementById("btnJogar").disabled = false;
-    //resultado.innerHTML = "<p class='resultado-final'>ERRO!! Poder não selecionado</p>";
-    //alert(atributoJogador);
-    //delay = 1000; setTimeout(function() {resultado.innerHTML = "";}, delay);
-  } 
+    document.getElementById("btnSortear").disabled = true;
+    document.getElementById("btnJogar").disabled = false;
+    resultado.innerHTML = "<p class='resultado-final'>ERRO!! Poder não selecionado</p>";
+    delay = 1000; setTimeout(function() {resultado.innerHTML = "";}, delay);
+  } else {    
+    document.getElementById("btnSortear").disabled = false;
+    document.getElementById("btnJogar").disabled = true;
+    
+    exibirCartaMaquina();
+    marcaAtributoMaquina();
+    exibirCartaJogadorCompleta(); 
+    
+    var valorCartaMaquina = cartaMaquina.atributos[atributoMaquina];
+    var valorCartaJogador = cartaJogador.atributos[atributoJogador];    
+        
+    if (valorCartaMaquina > valorCartaJogador){resultado.innerHTML = "<p class='resultado-final'>Maquina ganhou!!</p>"
+    } else if (valorCartaMaquina < valorCartaJogador){resultado.innerHTML = "<p class='resultado-final'>Parabens!! Você ganhou!!</p>"
+    } else {resultado.innerHTML = "<p class='resultado-final'>Empate!!</p>"}
+  }
+  console.log("Carta Jogador: " + cartaJogador.nome + " - " + atributoJogador + ": " + valorCartaJogador);
+  console.log("Carta Maquina: " + cartaMaquina.nome + " - " + atributoMaquina + ": " + valorCartaMaquina);  
 }
 
 function obtemAtributoJogador(){
