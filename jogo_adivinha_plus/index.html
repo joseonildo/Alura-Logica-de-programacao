@@ -19,20 +19,21 @@
             <div class="container__informacoes">                
                 <div class="container__texto">
                     <h1></h1> 
-                    <label for="dificuldade">Escolha o nível de dificuldade:</label> <br>
-                    <select id="dificuldade" name="dificuldade">
-                        <option value="facil">Facil - 20 tentativas</option>
-                        <option value="media">Média - 10 tentativas</option>
-                        <option value="dificil">Difícil - 5 tentativas</option>
+                    <label for="dificuldade" class="texto__paragrafo">Escolha o nível de dificuldade:</label> <br>
+                    <select name="dificuldade" id="dificuldade" class="container__select">
+                        <option value="facil">Facil - 20 chutes</option>
+                        <option value="media">Média - 10 chutes</option>
+                        <option value="dificil">Difícil - 5 chutes</option>
                     </select> 
-                    <input type="submit"> <br><br>
+                    <button onclick="selecionarDificuldade()" id="selecionarDificuldade" class="container__botao1">OK</button>
+                    <br><br><br>
                     <p1 class="texto__paragrafo"></p1><br>
                     <p2 class="texto__paragrafo"></p2>
                 </div>
-                <input min="1" max="20" id="campoChute" class="container__input">                
+                <input min="1" max="20" id="campoChute" class="container__input2">                
                 <div class="chute container__botoes">
-                    <button onclick="chutar()" id="chutar" class="container__botao">Chutar</button>
-                    <button onclick="novoJogo()" id="novoJogo" class="container__botao">Novo jogo</button>
+                    <button onclick="chutar()" id="chutar" class="container__botao2">Chutar</button>
+                    <button onclick="novoJogo()" id="novoJogo" class="container__botao2">Novo jogo</button>
                 </div>
             </div>
             <img src="./img/ia.png" alt="Uma pessoa olhando para a esquerda" class="container__imagem-pessoa" />
