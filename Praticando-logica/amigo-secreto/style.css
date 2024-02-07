@@ -126,7 +126,7 @@ body {
 }
 
 .form__input::placeholder {
-  color: #fff;
+  color: #646464;
   font-size: 21px;
 }
 
